@@ -1,24 +1,5 @@
 const url="http://localhost:8080/users/";
 
-const information=(name,age)=>{
-`my name is ${name} ${age}yo and this is my resumn`
-}
-
-const initLi = (data,title,description)=>{
-    `<li>
-    <p className="data">${data}</p>
-    <div className="my-information">
-    <p className="title">${title}</p>
-    <p className="deacription">${description}</p>
-    </div>
-    </li>
-    `
-}
-
-const addLi = (year, title, description) => {
-    $("ul").append(initLi(year, title, description));
-  };
-
 const getInformation = (id)=>{
 return fetch(`${url}${id}`,{method:"GET",headers: {
     "content-type": "application/json",
@@ -28,7 +9,8 @@ return fetch(`${url}${id}`,{method:"GET",headers: {
         return response.json();
     }
 }).then((data)=>{
-    $(".resume-description").html(information(data.name,data.age))
+    $(".resume-description").html(`MY NAME IS ${data.name} ${data.age}YO AND THIS IS MY RESUME/CV`)
+    $(".header-img").attr("src", data.avatar);
     $(".describe-me").html(data.description)
 }).catch((e)=>console.log(e))
 };
@@ -45,8 +27,15 @@ const getEducation = (id) =>{
         }
     }).then((data)=>{
         data.forEach(element => {
-            addLi(element.year,element.title,element.description)
-        });
+            $(".education-experience").append(
+                `<li>
+                        <span class="education-year">${element.year}</span>
+                        <div class="education">
+                            <span class="education-title">${element.title}</span>
+                            <p class="education-content">${element.description}</p>
+                        </div>
+                    </li>`
+        )});
     }
     ).catch(e=>console.log(e));
 };
