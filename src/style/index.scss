@@ -38,3 +38,16 @@ h2{
     color: red;
 }
 
+li {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    .education {
+        flex-basis: 90%;
+        background-color: $gray-light;
+        padding: 5px 10px;
+      }
+      .education-title{
+          font-weight: bold;
+      }
+  }
