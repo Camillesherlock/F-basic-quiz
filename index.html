@@ -9,5 +9,33 @@
 </head>
 <body>
   <script src="src/app.js"></script>
+  <header>
+    <img src="">
+    <h1 class="resume-hello">HELLO,</h1>
+    <p class="resume-description">MY NAME IS<p class="user-name">24YO AND THIS IS MY RESUME/CV</p>
+    </header>
+      <main>
+        <div className="about-me">
+          <h2>About Me</h2>
+          <p className="describe-me"></p>
+        </div>
+        <div className="education">
+          <h2>Education</h2>
+          <ul className="education-experience">
+            <li>
+              <span className="year"></span>
+              <div>
+                <span className="bottom"></span>
+                <p className="describe"></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </main>
 </body>
 </html>
+<script>
+  $.get("http://localhost:3000/users/1"),(data,status) =>{
+    $(".user-name").html(data.name)
+  }
+</script>
