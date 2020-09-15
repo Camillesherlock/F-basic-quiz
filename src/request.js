@@ -1,4 +1,4 @@
-const url="http://localhost:3000/users/";
+const url="http://localhost:8080/users/";
 
 const information=(name,age)=>{
 `my name is ${name} ${age}yo and this is my resumn`
@@ -19,8 +19,8 @@ const addLi = (year, title, description) => {
     $("ul").append(initLi(year, title, description));
   };
 
-const getInformation = async(id)=>{
-return fetch(`${url}/${id}`,{method:"get",headers: {
+const getInformation = (id)=>{
+return fetch(`${url}${id}`,{method:"GET",headers: {
     "content-type": "application/json",
   },})
 .then((response)=>{
@@ -33,9 +33,9 @@ return fetch(`${url}/${id}`,{method:"get",headers: {
 }).catch((e)=>console.log(e))
 };
 
-const getEducation = async(id) =>{
-    return fetch(`${url}/${id}/educations`,{
-        method:"get",
+const getEducation = (id) =>{
+    return fetch(`${url}${id}/educations`,{
+        method:"GET",
         headers:{
             "content-type":"application/json",
         },
