@@ -1,6 +1,8 @@
 const url="http://localhost:8080/users/";
 
+// TODO feedback: 有eslint error，缩进都有问题
 const getInformation = (id)=>{
+    // TODO feedback: 请求和渲染逻辑耦合在一起
 return fetch(`${url}${id}`,{method:"GET",headers: {
     "content-type": "application/json",
   },})
@@ -27,6 +29,7 @@ const getEducation = (id) =>{
         }
     }).then((data)=>{
         data.forEach(element => {
+            // TODO feedback: 在for循环中，每次都要操作DOM，影响性能，不推荐这样做
             $(".education-experience").append(
                 `<li>
                         <span class="education-year">${element.year}</span>
